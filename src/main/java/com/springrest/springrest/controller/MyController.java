@@ -4,13 +4,16 @@ import com.springrest.springrest.entities.Courses;
 import com.springrest.springrest.services.CourseService;
 import com.springrest.springrest.services.CourseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@ComponentScan(basePackageClasses = {MyController.class})
 public class MyController {
 
     @Autowired
@@ -61,5 +64,14 @@ public class MyController {
         {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+        }
+
+
+
+
+    @GetMapping("/error")
+        public String getErrorPath() {
+            // TODO Auto-generated method stub
+            return "No Mapping Found";
         }
 }
